@@ -1,8 +1,13 @@
 package code.microsystem.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.http.ResponseEntity;
@@ -26,7 +31,9 @@ public class User {
 	private String userAddress;
 	private String userPassword;
 	private String status;
-		
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "uid")
+	private List<UserDoc> doc;
 	
 	
 
